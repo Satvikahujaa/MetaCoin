@@ -9,32 +9,88 @@
 </head>
 
 <body>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button id="soundToggle" onclick="toggleSound()" title="Toggle Sound">🔊</button>
+        <button id="darkModeToggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+        <button onclick="showStatsModal()" title="View Statistics">📊</button>
+        <button onclick="showAchievementsModal()" title="View Achievements">🏆</button>
+    </div>
+
     <div class="container">
-        <h1>Coin Flip Game</h1>
+        <h1>🪙 Coin Flip Game</h1>
         <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px;">Choose your side and let fate decide</p>
+        
+        <!-- Stats Dashboard -->
+        <div id="stats" class="stats-dashboard"></div>
+        
+        <!-- Coin Flip Buttons -->
         <div class="containertoss">
             <div class="heads">
                 <button onclick="playgame('heads')"><img src="dime-heads.webp" alt="HEADS"></button>
                 <span>HEADS</span>
+                <kbd>H</kbd>
             </div>
             <div class="tails">
                 <button onclick="playgame('tails')"><img src="484-4843569_quarter-transparent-tail-coin-hd-png-download.png" alt="TAILS"></button>
                 <span>TAILS</span>
+                <kbd>T</kbd>
             </div>
         </div>
+        
+        <!-- Game Info -->
         <div class="game-info">
-            <p class="playermove">Your Call:</p>
-            <p class="computermove">Computer move:</p>
+            <p class="playermove">🎯 Your Call:</p>
+            <p class="computermove">🪙 Coin Result:</p>
             <p class="result">Result:</p>
             <p>
-                <span class="wins">Wins: 0</span> |
-                <span class="losses">Losses: 0</span>
+                <span class="wins">✅ Wins: 0</span> |
+                <span class="losses">❌ Losses: 0</span>
             </p>
         </div>
-        <button onclick="resetscore()">Reset Score</button>
+        
+        <!-- Game History -->
+        <div class="history-section">
+            <h3>📜 Recent Games</h3>
+            <div id="history" class="history-container"></div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button onclick="resetscore()" class="reset-btn">🔄 Reset All</button>
+        </div>
+    </div>
+
+    <!-- Statistics Modal -->
+    <div id="statsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📊 Statistics</h2>
+                <button class="close-btn" onclick="closeModal('statsModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="stats-detailed" class="stats-dashboard"></div>
+                <h3 style="margin-top: 20px;">Game History</h3>
+                <div id="history-detailed" class="history-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievements Modal -->
+    <div id="achievementsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 Achievements</h2>
+                <button class="close-btn" onclick="closeModal('achievementsModal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="achievements"></div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 
 </html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip Game 🎲</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Coin Flip Game</h1>
+        <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 30px;">Choose your side and let fate decide</p>
+        <div class="containertoss">
+            <div class="heads">
+                <button onclick="playgame('heads')"><img src="dime-heads.webp" alt="HEADS"></button>
+                <span>HEADS</span>
+            </div>
+            <div class="tails">
+                <button onclick="playgame('tails')"><img src="484-4843569_quarter-transparent-tail-coin-hd-png-download.png" alt="TAILS"></button>
+                <span>TAILS</span>
+            </div>
+        </div>
+        <div class="game-info">
+            <p class="playermove">Your Call:</p>
+            <p class="computermove">Computer move:</p>
+            <p class="result">Result:</p>
+            <p>
+                <span class="wins">Wins: 0</span> |
+                <span class="losses">Losses: 0</span>
+            </p>
+        </div>
+        <button onclick="resetscore()">Reset Score</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
