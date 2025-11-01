@@ -1,4 +1,4 @@
-# 🪙 Flip The Coin
+# 🪙 MetaCoin - Flip The Coin
 
 **Live Demo:** [https://coingamebysatvik.netlify.app/](https://coingamebysatvik.netlify.app/)
 
