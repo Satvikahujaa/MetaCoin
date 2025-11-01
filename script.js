@@ -14,19 +14,41 @@ let playermove = '';
 let cointoss = '';
 
 function playgame(playerChoice) {
-    playermove = playerChoice;
-    cointoss = computersteps();
-    
-    if (playermove === cointoss) {
-        result = 'you win';
-        score.wins++;
-    } else {
-        result = 'you lose';
-        score.losses++;
+    // Prevent multiple clicks during animation
+    if (document.querySelector('.containertoss').classList.contains('flipping')) {
+        return;
     }
 
-    localStorage.setItem('score', JSON.stringify(score));
-    updateDisplay();
+    playermove = playerChoice;
+    
+    // Add flipping animation class
+    document.querySelector('.containertoss').classList.add('flipping');
+    
+    // Disable buttons during animation
+    const buttons = document.querySelectorAll('.containertoss button');
+    buttons.forEach(btn => btn.disabled = true);
+    
+    // Simulate coin flip with delay
+    setTimeout(() => {
+        cointoss = computersteps();
+        
+        if (playermove === cointoss) {
+            result = 'YOU WIN! 🎉';
+            score.wins++;
+        } else {
+            result = 'YOU LOSE! 😢';
+            score.losses++;
+        }
+
+        localStorage.setItem('score', JSON.stringify(score));
+        updateDisplay();
+        
+        // Remove flipping class and re-enable buttons
+        setTimeout(() => {
+            document.querySelector('.containertoss').classList.remove('flipping');
+            buttons.forEach(btn => btn.disabled = false);
+        }, 800);
+    }, 400);
 }
 
 function computersteps() {
@@ -34,19 +56,45 @@ function computersteps() {
 }
 
 function resetscore() {
-    score.wins = 0;
-    score.losses = 0;
-    playermove = '';
-    cointoss = '';
-    result = '';
-    localStorage.removeItem('score');
-    updateDisplay();
+    if (confirm('Are you sure you want to reset your score?')) {
+        score.wins = 0;
+        score.losses = 0;
+        playermove = '';
+        cointoss = '';
+        result = '';
+        localStorage.removeItem('score');
+        updateDisplay();
+    }
 }
 
 function updateDisplay() {
-    document.querySelector('.playermove').textContent = `Your Call: ${playermove}`;
-    document.querySelector('.computermove').textContent = `Computer move: ${cointoss}`;
-    document.querySelector('.result').textContent = `Result: ${result}`;
-    document.querySelector('.wins').textContent = `Wins: ${score.wins}`;
-    document.querySelector('.losses').textContent = `Losses: ${score.losses}`;
+    const playerMoveEl = document.querySelector('.playermove');
+    const computerMoveEl = document.querySelector('.computermove');
+    const resultEl = document.querySelector('.result');
+    const winsEl = document.querySelector('.wins');
+    const lossesEl = document.querySelector('.losses');
+    
+    if (playermove) {
+        playerMoveEl.innerHTML = `🎯 Your Call: <strong>${playermove.toUpperCase()}</strong>`;
+    } else {
+        playerMoveEl.textContent = '🎯 Your Call: ';
+    }
+    
+    if (cointoss) {
+        computerMoveEl.innerHTML = `🪙 Coin Result: <strong>${cointoss.toUpperCase()}</strong>`;
+    } else {
+        computerMoveEl.textContent = '🪙 Coin Result: ';
+    }
+    
+    if (result) {
+        resultEl.innerHTML = `<span style="color: ${result.includes('WIN') ? '#4ade80' : '#f87171'}">${result}</span>`;
+    } else {
+        resultEl.textContent = 'Result: ';
+    }
+    
+    winsEl.innerHTML = `✅ Wins: <strong>${score.wins}</strong>`;
+    lossesEl.innerHTML = `❌ Losses: <strong>${score.losses}</strong>`;
 }
+
+// Initialize display on page load
+updateDisplay();
