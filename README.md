@@ -1,6 +1,6 @@
 # 🪙 Flip The Coin
 
-**Live Demo:** [https://satvikflipthecoin.netlify.app/](https://satvikflipthecoin.netlify.app/)
+**Live Demo:** [https://coingamebysatvik.netlify.app/](https://coingamebysatvik.netlify.app/)
 
 ---
 
