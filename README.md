@@ -1,4 +1,4 @@
-# 🪙 MetaCoin - Flip The Coin
+# 🪙 Flip The Coin
 
 **Live Demo:** [https://coingamebysatvik.netlify.app/](https://coingamebysatvik.netlify.app/)
 
@@ -84,7 +84,7 @@ localStorage.setItem('score', JSON.stringify(score));
 
 ## 🌐 Deployment
 This project is deployed via **Netlify**:  
-➡️ [https://satvikflipthecoin.netlify.app/](https://satvikflipthecoin.netlify.app/)
+➡️ [https://coingamebysatvik.netlify.app/](https://coingamebysatvik.netlify.app/)
 
 To deploy your own version:
 1. Create a Netlify account  
@@ -108,4 +108,4 @@ _Add screenshots or demo GIF here later._
 
 ## 🧑‍🎨 Author
 **Satvik Ahuja**  
-🔗 [GitHub](https://github.com/yourusername) | 🌐 [Live Site](https://satvikflipthecoin.netlify.app/)
+🔗 [GitHub](https://github.com/Satvikahujaa) | 🌐 [Live Site](https://coingamebysatvik.netlify.app/)
